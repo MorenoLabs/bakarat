@@ -322,16 +322,57 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
         }
+
+        .lang-selector {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .lang-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--color-border);
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .lang-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: white;
+        }
     </style>
 </head>
 <body>
     <div id="disclaimerModal" class="modal-overlay">
         <div class="modal-content">
+            <div class="lang-selector">
+                <button class="lang-btn active" onclick="setDisclaimerLang('en')">English</button>
+                <button class="lang-btn" onclick="setDisclaimerLang('fil')">Filipino</button>
+            </div>
             <div class="warning-icon">&#9888;</div>
-            <h2>Important Disclaimer</h2>
-            <p>This application is for <strong>educational and entertainment purposes only</strong>. Gambling involves significant financial risk and can be addictive. The house always has an edge - no betting system can guarantee profits.</p>
-            <p style="margin-bottom: 24px;"><strong>The author takes no responsibility for any financial losses.</strong> Never gamble with money you cannot afford to lose. If you have a gambling problem, please seek help.</p>
-            <button class="confirm-btn" onclick="acceptDisclaimer()">I Understand & Accept</button>
+            <div id="disclaimerEN">
+                <h2>Important Disclaimer</h2>
+                <p>This application is for <strong>educational and entertainment purposes only</strong>. Gambling involves significant financial risk and can be addictive. The house always has an edge - no betting system can guarantee profits.</p>
+                <p style="margin-bottom: 24px;"><strong>The author takes no responsibility for any financial losses.</strong> Never gamble with money you cannot afford to lose. If you have a gambling problem, please seek help.</p>
+                <button class="confirm-btn" onclick="acceptDisclaimer()">I Understand & Accept</button>
+            </div>
+            <div id="disclaimerFIL" class="hidden">
+                <h2>Mahalagang Paalala</h2>
+                <p>Ang application na ito ay para sa <strong>layuning pang-edukasyon at libangan lamang</strong>. Ang pagsusugal ay may malaking panganib sa pananalapi at maaaring maging adiktibo. Ang casino ay palaging may kalamangan - walang betting system ang makakagarantiya ng tubo.</p>
+                <p style="margin-bottom: 24px;"><strong>Ang may-akda ay walang pananagutan sa anumang pagkalugi.</strong> Huwag magsugal ng perang hindi mo kayang mawala. Kung may problema ka sa pagsusugal, humingi ng tulong.</p>
+                <button class="confirm-btn" onclick="acceptDisclaimer()">Naiintindihan Ko at Tinatanggap</button>
+            </div>
         </div>
     </div>
 
@@ -1415,6 +1456,19 @@
         // =====================
         // DISCLAIMER MODAL
         // =====================
+        function setDisclaimerLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (lang === 'en') {
+                document.getElementById('disclaimerEN').classList.remove('hidden');
+                document.getElementById('disclaimerFIL').classList.add('hidden');
+            } else {
+                document.getElementById('disclaimerEN').classList.add('hidden');
+                document.getElementById('disclaimerFIL').classList.remove('hidden');
+            }
+        }
+
         function acceptDisclaimer() {
             document.getElementById('disclaimerModal').classList.add('hidden');
         }
