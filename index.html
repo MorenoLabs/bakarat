@@ -10,6 +10,7 @@
             --color-primary-hover: #174a67;
             --color-success: #22b55e;
             --color-error: #d32f2f;
+            --color-warning: #f59e0b;
             --color-bg: #f5f5f0;
             --color-surface: #ffffff;
             --color-text: #1a1a1a;
@@ -17,9 +18,7 @@
             --color-border: #e0e0e0;
         }
 
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         html, body {
             margin: 0;
@@ -29,11 +28,7 @@
             color: var(--color-text);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
         header {
             background-color: var(--color-primary);
@@ -42,26 +37,11 @@
             margin: -20px -20px 0 -20px;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 600;
-        }
+        h1 { margin: 0; font-size: 28px; font-weight: 600; }
 
-        .header-subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-top: 4px;
-            margin-bottom: 20px;
-        }
+        .header-subtitle { font-size: 14px; opacity: 0.9; margin-top: 4px; margin-bottom: 20px; }
 
-        /* Navigation Tabs */
-        .nav-tabs {
-            display: flex;
-            gap: 0;
-            margin: 0 -20px;
-            padding: 0 20px;
-        }
+        .nav-tabs { display: flex; gap: 0; margin: 0 -20px; padding: 0 20px; }
 
         .nav-tab {
             padding: 14px 24px;
@@ -76,40 +56,17 @@
             margin-right: 4px;
         }
 
-        .nav-tab:hover {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
+        .nav-tab:hover { background: rgba(255,255,255,0.2); color: white; }
+        .nav-tab.active { background: var(--color-bg); color: var(--color-primary); }
 
-        .nav-tab.active {
-            background: var(--color-bg);
-            color: var(--color-primary);
-        }
+        .tab-content { display: none; padding-top: 30px; }
+        .tab-content.active { display: block; }
 
-        .tab-content {
-            display: none;
-            padding-top: 30px;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-bottom: 30px;
-        }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 30px; }
 
         @media (max-width: 900px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-tab {
-                padding: 12px 16px;
-                font-size: 13px;
-            }
+            .grid { grid-template-columns: 1fr; }
+            .nav-tab { padding: 12px 16px; font-size: 13px; }
         }
 
         .card {
@@ -121,27 +78,13 @@
             margin-bottom: 24px;
         }
 
-        .card h2 {
-            margin: 0 0 16px 0;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--color-primary);
-        }
+        .card h2 { margin: 0 0 16px 0; font-size: 18px; font-weight: 600; color: var(--color-primary); }
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+        .form-group { margin-bottom: 16px; }
 
-        label {
-            display: block;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: var(--color-text);
-        }
+        label { display: block; font-size: 13px; font-weight: 500; margin-bottom: 6px; color: var(--color-text); }
 
-        input[type="number"],
-        select {
+        input[type="number"], select {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid var(--color-border);
@@ -150,18 +93,13 @@
             font-family: inherit;
         }
 
-        input[type="number"]:focus,
-        select:focus {
+        input[type="number"]:focus, select:focus {
             outline: none;
             border-color: var(--color-primary);
             box-shadow: 0 0 0 3px rgba(31, 92, 127, 0.1);
         }
 
-        .button-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
+        .button-group { display: flex; gap: 10px; margin-top: 20px; }
 
         button {
             flex: 1;
@@ -174,42 +112,15 @@
             transition: all 0.2s;
         }
 
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: white;
-        }
+        .btn-primary { background-color: var(--color-primary); color: white; }
+        .btn-primary:hover { background-color: var(--color-primary-hover); }
+        .btn-secondary { background-color: #f0f0f0; color: var(--color-text); }
+        .btn-secondary:hover { background-color: #e0e0e0; }
+        .btn-small { padding: 8px 12px; font-size: 12px; flex: none; }
 
-        .btn-primary:hover {
-            background-color: var(--color-primary-hover);
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
 
-        .btn-secondary {
-            background-color: #f0f0f0;
-            color: var(--color-text);
-        }
-
-        .btn-secondary:hover {
-            background-color: #e0e0e0;
-        }
-
-        .btn-small {
-            padding: 8px 12px;
-            font-size: 12px;
-            flex: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 16px;
-        }
-
-        @media (max-width: 600px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+        @media (max-width: 600px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
 
         .stat-box {
             background: var(--color-bg);
@@ -219,27 +130,12 @@
             border-left: 3px solid var(--color-primary);
         }
 
-        .stat-label {
-            font-size: 12px;
-            color: var(--color-text-light);
-            margin-bottom: 4px;
-        }
+        .stat-label { font-size: 12px; color: var(--color-text-light); margin-bottom: 4px; }
+        .stat-value { font-size: 20px; font-weight: 600; color: var(--color-text); }
 
-        .stat-value {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--color-text);
-        }
+        .table-wrapper { overflow-x: auto; }
 
-        .table-wrapper {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
 
         th {
             background-color: var(--color-bg);
@@ -250,29 +146,12 @@
             border-bottom: 2px solid var(--color-border);
         }
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--color-border);
-        }
+        td { padding: 12px; border-bottom: 1px solid var(--color-border); }
+        tr:hover { background-color: var(--color-bg); }
 
-        tr:hover {
-            background-color: var(--color-bg);
-        }
-
-        .result-win, .result-banker {
-            color: var(--color-success);
-            font-weight: 600;
-        }
-
-        .result-loss, .result-tie {
-            color: var(--color-error);
-            font-weight: 600;
-        }
-
-        .result-player {
-            color: var(--color-primary);
-            font-weight: 600;
-        }
+        .result-win, .result-banker { color: var(--color-success); font-weight: 600; }
+        .result-loss, .result-tie { color: var(--color-error); font-weight: 600; }
+        .result-player { color: var(--color-primary); font-weight: 600; }
 
         .strategy-info {
             background: #f0f8ff;
@@ -284,17 +163,9 @@
             line-height: 1.5;
         }
 
-        .info-title {
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 6px;
-        }
+        .info-title { font-weight: 600; color: var(--color-primary); margin-bottom: 6px; }
 
-        .toggle-switch {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
+        .toggle-switch { display: flex; gap: 8px; margin-bottom: 16px; }
 
         .toggle-btn {
             flex: 1;
@@ -314,9 +185,7 @@
             color: white;
         }
 
-        .hidden {
-            display: none;
-        }
+        .hidden { display: none; }
 
         .summary-box {
             background: var(--color-bg);
@@ -326,20 +195,18 @@
             border-left: 4px solid var(--color-primary);
         }
 
-        .summary-box strong {
-            font-weight: 600;
-        }
+        .summary-box strong { font-weight: 600; }
 
-        .error-message {
-            color: var(--color-error);
-            font-size: 13px;
-            margin-top: 8px;
-        }
+        .error-message { color: var(--color-error); font-size: 13px; margin-top: 8px; }
+        .success-message { color: var(--color-success); font-size: 13px; margin-top: 8px; }
+        .warning-message { color: var(--color-warning); font-size: 13px; margin-top: 8px; font-weight: 600; }
 
-        .success-message {
-            color: var(--color-success);
+        .system-state {
+            background: #e8f4fd;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-top: 12px;
             font-size: 13px;
-            margin-top: 8px;
         }
 
         .card-display {
@@ -360,23 +227,9 @@
             border-left: 4px solid var(--color-primary);
         }
 
-        .hand-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin: 12px 0;
-        }
-
-        .hand-section h4 {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            color: var(--color-primary);
-        }
-
-        .hand-section p {
-            margin: 4px 0;
-            font-size: 13px;
-        }
+        .hand-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+        .hand-section h4 { margin: 0 0 8px 0; font-size: 14px; color: var(--color-primary); }
+        .hand-section p { margin: 4px 0; font-size: 13px; }
 
         .card-badge {
             display: inline-block;
@@ -389,44 +242,14 @@
             font-weight: 600;
         }
 
-        /* Guide Styles */
-        .guide-content {
-            line-height: 1.7;
-        }
-
-        .guide-content h2 {
-            color: var(--color-primary);
-            border-bottom: 2px solid var(--color-border);
-            padding-bottom: 8px;
-            margin-top: 32px;
-        }
-
-        .guide-content h3 {
-            color: var(--color-text);
-            margin-top: 24px;
-        }
-
-        .guide-content h4 {
-            color: var(--color-primary);
-            margin-top: 20px;
-        }
-
-        .guide-content table {
-            margin: 16px 0;
-            background: white;
-        }
-
-        .guide-content ul {
-            padding-left: 24px;
-        }
-
-        .guide-content li {
-            margin-bottom: 8px;
-        }
-
-        .guide-content strong {
-            color: var(--color-primary);
-        }
+        .guide-content { line-height: 1.7; }
+        .guide-content h2 { color: var(--color-primary); border-bottom: 2px solid var(--color-border); padding-bottom: 8px; margin-top: 32px; }
+        .guide-content h3 { color: var(--color-text); margin-top: 24px; }
+        .guide-content h4 { color: var(--color-primary); margin-top: 20px; }
+        .guide-content table { margin: 16px 0; background: white; }
+        .guide-content ul, .guide-content ol { padding-left: 24px; }
+        .guide-content li { margin-bottom: 8px; }
+        .guide-content strong { color: var(--color-primary); }
 
         .guide-content .warning {
             background: #fff3cd;
@@ -452,23 +275,70 @@
             margin-bottom: 24px;
         }
 
-        .quick-ref-table {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
+        .quick-ref-table { background: white; border-radius: 8px; overflow: hidden; }
+        .quick-ref-table th { background: var(--color-primary); color: white; }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
         }
 
-        .quick-ref-table th {
-            background: var(--color-primary);
+        .modal-overlay.hidden { display: none; }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 { color: #d32f2f; margin: 0 0 20px 0; font-size: 22px; border: none; padding: 0; }
+        .modal-content p { color: #333; line-height: 1.7; margin: 0 0 24px 0; font-size: 15px; }
+        .modal-content .warning-icon { font-size: 48px; margin-bottom: 16px; }
+
+        .modal-content .confirm-btn {
+            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
             color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .modal-content .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
         }
     </style>
 </head>
 <body>
+    <div id="disclaimerModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="warning-icon">&#9888;</div>
+            <h2>Important Disclaimer</h2>
+            <p>This application is for <strong>educational and entertainment purposes only</strong>. Gambling involves significant financial risk and can be addictive. The house always has an edge - no betting system can guarantee profits.</p>
+            <p style="margin-bottom: 24px;"><strong>The author takes no responsibility for any financial losses.</strong> Never gamble with money you cannot afford to lose. If you have a gambling problem, please seek help.</p>
+            <button class="confirm-btn" onclick="acceptDisclaimer()">I Understand & Accept</button>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <h1>Baccarat Pro</h1>
-            <div class="header-subtitle">Strategy Tracker, Simulator & Guide - All in One</div>
+            <div class="header-subtitle">Strategy Tracker, Simulator & Guide - Philippine Peso Edition</div>
 
             <div class="nav-tabs">
                 <button class="nav-tab active" onclick="showTab('tracker')">Strategy Tracker</button>
@@ -480,33 +350,32 @@
         <!-- STRATEGY TRACKER TAB -->
         <div id="tracker" class="tab-content active">
             <div class="grid">
-                <!-- Setup & Control Panel -->
                 <div class="card">
                     <h2>Setup & Control</h2>
 
                     <div class="toggle-switch">
-                        <button class="toggle-btn active" onclick="setStrategy('banker')">Strategy: Banker</button>
-                        <button class="toggle-btn" onclick="setStrategy('custom')">Custom</button>
+                        <button class="toggle-btn active" onclick="setStrategy('banker', this)">Bet: Banker</button>
+                        <button class="toggle-btn" onclick="setStrategy('player', this)">Bet: Player</button>
                     </div>
 
                     <div class="form-group">
-                        <label>Initial Bankroll (€)</label>
-                        <input type="number" id="initialBankroll" value="200" min="10" step="10">
+                        <label>Initial Bankroll (₱)</label>
+                        <input type="number" id="initialBankroll" value="5000" min="100" step="100">
                     </div>
 
                     <div class="form-group">
-                        <label>Base Bet Unit (€)</label>
-                        <input type="number" id="baseBet" value="5" min="1" step="1">
+                        <label>Base Bet Unit (₱)</label>
+                        <input type="number" id="baseBet" value="100" min="10" step="10">
                     </div>
 
                     <div class="form-group">
                         <label>Betting System</label>
                         <select id="system" onchange="updateSystemInfo()">
-                            <option value="fixed">Fixed Bet (Simple)</option>
-                            <option value="paroli">Paroli (Win & Increase)</option>
-                            <option value="1324">1-3-2-4 Sequence</option>
+                            <option value="flat">Flat Betting (Same Every Hand)</option>
                             <option value="martingale">Martingale (Double After Loss)</option>
-                            <option value="dalembert">D'Alembert (Gradual)</option>
+                            <option value="paroli">Paroli (Double After Win)</option>
+                            <option value="fibonacci">Fibonacci (Sequence)</option>
+                            <option value="1324">1-3-2-4 System</option>
                         </select>
                     </div>
 
@@ -516,8 +385,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Max Bet Limit (€)</label>
-                        <input type="number" id="maxBet" value="200" min="1" step="10">
+                        <label>Max Bet Limit (₱)</label>
+                        <input type="number" id="maxBet" value="10000" min="100" step="100">
                     </div>
 
                     <div class="button-group">
@@ -525,14 +394,13 @@
                     </div>
                 </div>
 
-                <!-- Session Stats -->
                 <div class="card">
                     <h2>Session Stats</h2>
 
                     <div class="stats-grid">
                         <div class="stat-box">
                             <div class="stat-label">Current Bankroll</div>
-                            <div class="stat-value" id="currentBankroll">€200</div>
+                            <div class="stat-value" id="currentBankroll">₱5,000</div>
                         </div>
                         <div class="stat-box">
                             <div class="stat-label">Total Hands</div>
@@ -555,18 +423,19 @@
                         </div>
                         <div class="stat-box">
                             <div class="stat-label">Profit/Loss</div>
-                            <div class="stat-value" id="profitLoss" style="color: #666;">€0</div>
+                            <div class="stat-value" id="profitLoss" style="color: #666;">₱0</div>
                         </div>
                     </div>
 
                     <div class="summary-box">
-                        <div><strong>Next Bet:</strong> <span id="nextBet">€5</span></div>
-                        <div style="margin-top: 8px;"><strong>Strategy:</strong> <span id="currentStrategy">Banker + Fixed</span></div>
+                        <div><strong>Next Bet:</strong> <span id="nextBet">₱100</span></div>
+                        <div style="margin-top: 8px;"><strong>Strategy:</strong> <span id="currentStrategy">Banker + Flat</span></div>
                     </div>
+
+                    <div id="systemState" class="system-state hidden"></div>
                 </div>
             </div>
 
-            <!-- Bet Input -->
             <div class="card">
                 <h2>Record Bet Result</h2>
 
@@ -576,38 +445,35 @@
                         <select id="betType">
                             <option value="banker">Banker</option>
                             <option value="player">Player</option>
-                            <option value="tie">Tie</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Bet Amount (€)</label>
-                        <input type="number" id="betAmount" value="5" min="1" step="1">
+                        <label>Bet Amount (₱)</label>
+                        <input type="number" id="betAmount" value="100" min="10" step="10">
                     </div>
                 </div>
 
                 <div class="button-group">
-                    <button class="btn-primary" onclick="recordWin()">✓ Win</button>
-                    <button class="btn-primary" style="background-color: var(--color-error);" onclick="recordLoss()">✗ Loss</button>
+                    <button class="btn-primary" onclick="recordResult('win')">WIN</button>
+                    <button class="btn-primary" style="background-color: var(--color-error);" onclick="recordResult('loss')">LOSS</button>
                     <button class="btn-secondary btn-small" onclick="undoLastBet()">Undo</button>
                 </div>
                 <div id="message"></div>
             </div>
 
-            <!-- Bet History -->
             <div class="card">
                 <h2>Bet History</h2>
-
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>Hand</th>
+                                <th>#</th>
                                 <th>Type</th>
-                                <th>Bet (€)</th>
+                                <th>Bet</th>
                                 <th>Result</th>
-                                <th>Bankroll (€)</th>
-                                <th></th>
+                                <th>P/L</th>
+                                <th>Balance</th>
                             </tr>
                         </thead>
                         <tbody id="historyTable">
@@ -619,15 +485,13 @@
                 </div>
             </div>
 
-            <!-- Strategy Tips -->
             <div class="card">
                 <h2>Quick Tips</h2>
                 <ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--color-text-light);">
-                    <li><strong>Banker Edge:</strong> Always prefer Banker (~1.06% house edge vs Player ~1.24%)</li>
-                    <li><strong>Avoid Tie:</strong> Tie bets have ~14% house edge despite attractive payouts</li>
-                    <li><strong>Bankroll Rule:</strong> Stop if you lose 50% of your starting bankroll</li>
-                    <li><strong>Realistic Goals:</strong> Aim for +30–50% gains, not doubling your money</li>
-                    <li><strong>No Patterns:</strong> Each hand is independent; casino roadmaps don't predict outcomes</li>
+                    <li><strong>Banker Edge:</strong> Banker has ~1.06% house edge vs Player ~1.24%</li>
+                    <li><strong>Avoid Tie:</strong> Tie bets have ~14% house edge</li>
+                    <li><strong>Stop-Loss:</strong> Stop if you lose 50% of your starting bankroll</li>
+                    <li><strong>Win Goal:</strong> Aim for +30-50% gains, then walk away</li>
                 </ul>
             </div>
         </div>
@@ -635,14 +499,12 @@
         <!-- SIMULATOR TAB -->
         <div id="simulator" class="tab-content">
             <div class="grid">
-                <!-- Simulator Controls -->
                 <div class="card">
                     <h2>Simulation Settings</h2>
 
                     <div class="form-group">
                         <label>Number of Decks</label>
                         <select id="numDecks">
-                            <option value="1">1 Deck</option>
                             <option value="6" selected>6 Decks (Standard)</option>
                             <option value="8">8 Decks</option>
                         </select>
@@ -659,17 +521,31 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Base Bet (€)</label>
-                        <input type="number" id="baseBetSim" value="10" min="1" step="1">
+                        <label>Base Bet (₱)</label>
+                        <input type="number" id="baseBetSim" value="100" min="10" step="10">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Max Bet Limit (₱)</label>
+                        <input type="number" id="maxBetSim" value="10000" min="100" step="100">
                     </div>
 
                     <div class="form-group">
                         <label>Betting System</label>
                         <select id="systemSim">
+                            <option value="flat">Flat Betting</option>
+                            <option value="martingale">Martingale</option>
+                            <option value="paroli">Paroli</option>
+                            <option value="fibonacci">Fibonacci</option>
+                            <option value="1324">1-3-2-4 System</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bet On</label>
+                        <select id="simBetOn">
                             <option value="banker">Always Banker</option>
                             <option value="player">Always Player</option>
-                            <option value="paroli">Paroli (1→2→4→reset)</option>
-                            <option value="fixed">Fixed Bet</option>
                         </select>
                     </div>
 
@@ -679,7 +555,6 @@
                     </div>
                 </div>
 
-                <!-- Simulation Stats -->
                 <div class="card">
                     <h2>Simulation Results</h2>
 
@@ -689,12 +564,12 @@
                             <div class="stat-value" id="simHandsPlayed">0</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-label">Total Wagered (€)</div>
-                            <div class="stat-value" id="simTotalWagered">0</div>
+                            <div class="stat-label">Total Wagered</div>
+                            <div class="stat-value" id="simTotalWagered">₱0</div>
                         </div>
                         <div class="stat-box">
-                            <div class="stat-label">Final Bankroll (€)</div>
-                            <div class="stat-value" id="simFinalBankroll">0</div>
+                            <div class="stat-label">Max Bet Used</div>
+                            <div class="stat-value" id="simMaxBetUsed">₱0</div>
                         </div>
                     </div>
 
@@ -714,21 +589,22 @@
                     </div>
 
                     <div class="summary-box">
-                        <div><strong>Net Profit/Loss:</strong> <span id="simProfitLoss">€0</span></div>
+                        <div><strong>Net Profit/Loss:</strong> <span id="simProfitLoss">₱0</span></div>
                         <div style="margin-top: 8px;"><strong>ROI:</strong> <span id="simROI">0%</span></div>
-                        <div style="margin-top: 8px;"><strong>House Edge Effect:</strong> <span id="simHouseEdge">~1.06%</span></div>
+                        <div style="margin-top: 8px;"><strong>Bet Wins:</strong> <span id="simBetWins">0</span> | <strong>Bet Losses:</strong> <span id="simBetLosses">0</span></div>
                     </div>
+
+                    <div id="simWarning" class="warning-message hidden"></div>
                 </div>
             </div>
 
-            <!-- Single Hand Simulator -->
             <div class="card">
                 <h2>Play Single Hand</h2>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
                     <div class="form-group">
-                        <label>Your Bet (€)</label>
-                        <input type="number" id="singleBet" value="10" min="1" step="1">
+                        <label>Your Bet (₱)</label>
+                        <input type="number" id="singleBet" value="100" min="10" step="10">
                     </div>
 
                     <div class="form-group">
@@ -736,7 +612,7 @@
                         <select id="singleBetType">
                             <option value="banker">Banker</option>
                             <option value="player">Player</option>
-                            <option value="tie">Tie</option>
+                            <option value="tie">Tie (8:1)</option>
                         </select>
                     </div>
                 </div>
@@ -751,14 +627,14 @@
 
                         <div class="hand-cards">
                             <div class="hand-section">
-                                <h4>Banker's Hand</h4>
-                                <p><span id="bankerCards"></span></p>
-                                <p style="font-weight: 600; margin-top: 8px;">Total: <span id="bankerTotal">0</span></p>
-                            </div>
-                            <div class="hand-section">
                                 <h4>Player's Hand</h4>
                                 <p><span id="playerCards"></span></p>
                                 <p style="font-weight: 600; margin-top: 8px;">Total: <span id="playerTotal">0</span></p>
+                            </div>
+                            <div class="hand-section">
+                                <h4>Banker's Hand</h4>
+                                <p><span id="bankerCards"></span></p>
+                                <p style="font-weight: 600; margin-top: 8px;">Total: <span id="bankerTotal">0</span></p>
                             </div>
                         </div>
 
@@ -768,39 +644,39 @@
                 </div>
             </div>
 
-            <!-- Simulation History -->
             <div class="card">
                 <h2>Last 20 Simulated Hands</h2>
-
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr>
-                                <th>Hand</th>
+                                <th>#</th>
+                                <th>Winner</th>
+                                <th>Player</th>
+                                <th>Banker</th>
+                                <th>Your Bet</th>
                                 <th>Result</th>
-                                <th>Banker Score</th>
-                                <th>Player Score</th>
                             </tr>
                         </thead>
                         <tbody id="simHistoryTable">
                             <tr>
-                                <td colspan="4" style="text-align: center; color: var(--color-text-light);">No hands yet. Run simulation or play a hand!</td>
+                                <td colspan="6" style="text-align: center; color: var(--color-text-light);">No hands yet.</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- How It Works -->
             <div class="card">
-                <h2>How It Works</h2>
+                <h2>How Baccarat Works</h2>
                 <ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--color-text-light);">
-                    <li><strong>Card Values:</strong> 0-9 worth face value, 10-K worth 0 points. Total = last digit of sum.</li>
-                    <li><strong>Natural:</strong> First 2 cards total 8 or 9 = automatic win (no 3rd card).</li>
-                    <li><strong>Third Card Rules:</strong> Complex rules determine if Banker or Player draws a 3rd card.</li>
-                    <li><strong>Banker Wins:</strong> Pays even money minus 5% commission.</li>
-                    <li><strong>Player Wins:</strong> Pays even money (no commission).</li>
-                    <li><strong>Tie:</strong> Returns your bet (no profit/loss) but high house edge (~14%).</li>
+                    <li><strong>Card Values:</strong> A=1, 2-9=face value, 10/J/Q/K=0. Total = last digit of sum.</li>
+                    <li><strong>Natural:</strong> 8 or 9 on first 2 cards = automatic stand.</li>
+                    <li><strong>Player Rule:</strong> Draws on 0-5, stands on 6-7.</li>
+                    <li><strong>Banker Rule:</strong> Complex rules based on Player's third card.</li>
+                    <li><strong>Banker Wins:</strong> Pays 1:1 minus 5% commission.</li>
+                    <li><strong>Player Wins:</strong> Pays 1:1 (no commission).</li>
+                    <li><strong>Tie:</strong> Usually pays 8:1.</li>
                 </ul>
             </div>
         </div>
@@ -809,136 +685,92 @@
         <div id="guide" class="tab-content">
             <div class="card guide-content">
                 <div class="guide-intro">
-                    <h2 style="margin-top: 0; border: none; padding: 0;">Welcome to the Baccarat Strategy Guide</h2>
-                    <p>Your tool for testing betting systems, managing bankroll strategies, and understanding the mathematics behind one of the casino's most elegant games.</p>
+                    <h2 style="margin-top: 0; border: none; padding: 0;">Baccarat Betting Systems Guide</h2>
+                    <p>Understand each betting system, how it works, and when to use it. Remember: <strong>no system beats the house edge</strong> - these simply structure your bet sizing.</p>
                 </div>
 
-                <h2>Core Betting Principles</h2>
-
-                <h3>Why Banker is Your Best Bet</h3>
-                <p>The Banker bet carries the lowest house edge in baccarat at approximately <strong>1.06%</strong>, compared to the Player bet at <strong>1.24%</strong>. While a 5% commission is typically deducted from Banker wins, the statistical advantage still favours this wager over time.</p>
-
-                <div class="warning">
-                    <strong>Avoid the Tie Bet</strong><br>
-                    The Tie bet may offer attractive 8:1 or 9:1 payouts, but the house edge sits at a steep <strong>~14%</strong>. You'll quickly see how Tie bets erode your bankroll over extended sessions.
-                </div>
-
-                <h2>Bankroll Management</h2>
-
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Example</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Session Budget</strong></td>
-                                <td>€200</td>
-                                <td>Total amount allocated for the session</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Unit Size</strong></td>
-                                <td>€5</td>
-                                <td>Base betting amount (1–2% of bankroll recommended)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Stop-Loss</strong></td>
-                                <td>50%</td>
-                                <td>Exit when losses reach this threshold</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Win Goal</strong></td>
-                                <td>+30–50%</td>
-                                <td>Target profit to end the session</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="tip">
-                    Disciplined bankroll management won't change the odds, but it will help you play longer and avoid catastrophic losses.
-                </div>
-
-                <h2>Betting Systems</h2>
-                <p>Remember: <strong>no system overcomes the house edge</strong>—these simply structure how you size your bets.</p>
-
-                <h3>Positive Progression Systems</h3>
-                <p>These systems increase bets after wins, aiming to capitalise on streaks while keeping losses contained.</p>
-
-                <h4>Paroli System</h4>
-                <p>A conservative approach that presses winning streaks:</p>
-                <ol>
-                    <li>Start with <strong>1 unit</strong> on Banker</li>
-                    <li>After a win, increase to <strong>2 units</strong></li>
-                    <li>After a second consecutive win, increase to <strong>3 or 4 units</strong></li>
-                    <li>After any loss (or reaching your target), reset to <strong>1 unit</strong></li>
-                </ol>
-                <p><em>Best for: Players who want modest gains with limited downside exposure.</em></p>
-
-                <h4>1-3-2-4 System</h4>
-                <p>A structured sequence that locks in profit after successful runs:</p>
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Step</th>
-                                <th>Bet (Units)</th>
-                                <th>After Win</th>
-                                <th>After Loss</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td>1</td><td>Advance to Step 2</td><td>Restart at Step 1</td></tr>
-                            <tr><td>2</td><td>3</td><td>Advance to Step 3</td><td>Restart at Step 1</td></tr>
-                            <tr><td>3</td><td>2</td><td>Advance to Step 4</td><td>Restart at Step 1</td></tr>
-                            <tr><td>4</td><td>4</td><td>Restart at Step 1</td><td>Restart at Step 1</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p><em>Best for: Players seeking a balanced risk/reward profile with built-in profit protection.</em></p>
-
-                <h3>Negative Progression Systems</h3>
-                <p>These systems increase bets after losses, attempting to recover previous losses with a single win. <strong>Use with caution</strong>—bet sizes can escalate rapidly.</p>
-
-                <h4>Martingale</h4>
-                <p>The classic doubling system:</p>
+                <h2>1. Flat Betting (Baseline)</h2>
+                <p>The simplest approach - bet the same amount every hand.</p>
                 <ul>
-                    <li>Bet <strong>1 unit</strong>; if you lose, bet <strong>2 units</strong></li>
-                    <li>Continue doubling after each loss</li>
-                    <li>After any win, return to <strong>1 unit</strong></li>
+                    <li><strong>Logic:</strong> Always bet your base unit regardless of wins or losses</li>
+                    <li><strong>Risk Level:</strong> Low</li>
+                    <li><strong>Best For:</strong> Conservative players, learning the game</li>
+                </ul>
+                <div class="tip">
+                    <strong>Example:</strong> Base ₱100<br>
+                    Hand 1: Bet ₱100, LOSE → Balance: -₱100<br>
+                    Hand 2: Bet ₱100, WIN → Balance: ₱0<br>
+                    Hand 3: Bet ₱100, WIN → Balance: +₱100
+                </div>
+
+                <h2>2. Martingale (Negative Progression)</h2>
+                <p>Double your bet after every LOSS. Reset to base after a WIN.</p>
+                <ul>
+                    <li><strong>After LOSS:</strong> Double the bet (bet = base × 2^losses)</li>
+                    <li><strong>After WIN:</strong> Reset to base unit</li>
+                    <li><strong>Risk Level:</strong> HIGH - bets escalate very quickly</li>
+                    <li><strong>Danger Zone:</strong> 7+ consecutive losses requires 128× base bet</li>
                 </ul>
                 <div class="warning">
-                    <strong>Risk Warning:</strong> A losing streak of 6–7 hands can require bets of 64–128 units. Set a maximum step limit (e.g., 4–5 doubles) to cap exposure.
+                    <strong>Example:</strong> Base ₱100<br>
+                    Hand 1: Bet ₱100, LOSE → losses=1, Balance: -₱100<br>
+                    Hand 2: Bet ₱200, LOSE → losses=2, Balance: -₱300<br>
+                    Hand 3: Bet ₱400, WIN → losses=0, Balance: +₱100 (recovered!)<br>
+                    Hand 4: Bet ₱100, LOSE → losses=1, Balance: ₱0<br><br>
+                    <strong>Warning:</strong> After 6 losses you need ₱6,400 to continue!
                 </div>
 
-                <h4>D'Alembert</h4>
-                <p>A gentler negative progression:</p>
+                <h2>3. Paroli (Positive Progression)</h2>
+                <p>Double your bet after every WIN. Reset after a LOSS OR after 3 consecutive wins.</p>
                 <ul>
-                    <li>Increase bet by <strong>1 unit</strong> after a loss</li>
-                    <li>Decrease bet by <strong>1 unit</strong> after a win</li>
-                    <li>Never drop below <strong>1 unit</strong></li>
+                    <li><strong>After WIN:</strong> Double the bet (up to 3 wins)</li>
+                    <li><strong>After LOSS:</strong> Reset to base unit</li>
+                    <li><strong>After 3 WINS:</strong> Reset to base unit (lock profits)</li>
+                    <li><strong>Risk Level:</strong> Low-Medium - losses only cost base unit</li>
                 </ul>
-                <p><em>Best for: Players who want loss recovery without Martingale's explosive growth.</em></p>
-
-                <h2>Common Misconceptions</h2>
-                <ul>
-                    <li><strong>Scoreboard patterns are meaningless.</strong> Each hand is statistically independent—past results do not influence future outcomes.</li>
-                    <li><strong>No system beats the house.</strong> The simulator will demonstrate this over sufficient sample sizes.</li>
-                    <li><strong>Streaks happen randomly.</strong> Both winning and losing runs are natural variance, not predictable patterns.</li>
-                </ul>
-
-                <h2>Recommended Approach</h2>
                 <div class="tip">
-                    <ol style="margin: 0; padding-left: 20px;">
-                        <li><strong>Bet selection:</strong> Banker (predominantly)</li>
-                        <li><strong>Staking system:</strong> Paroli or 1-3-2-4</li>
-                        <li><strong>Bankroll rules:</strong> 50% stop-loss, 30–40% win goal</li>
-                        <li><strong>Discipline:</strong> Stick to one system per session without chasing losses</li>
-                    </ol>
+                    <strong>Example:</strong> Base ₱100<br>
+                    Hand 1: Bet ₱100, WIN → wins=1, Balance: +₱100, next=₱200<br>
+                    Hand 2: Bet ₱200, WIN → wins=2, Balance: +₱300, next=₱400<br>
+                    Hand 3: Bet ₱400, WIN → wins=3, Balance: +₱700, RESET!<br>
+                    Hand 4: Bet ₱100, LOSE → wins=0, Balance: +₱600<br><br>
+                    <strong>Key:</strong> You risk house money after wins, not your own!
+                </div>
+
+                <h2>4. Fibonacci (Negative Progression)</h2>
+                <p>Use the Fibonacci sequence: 1, 1, 2, 3, 5, 8, 13, 21, 34...</p>
+                <ul>
+                    <li><strong>After LOSS:</strong> Move forward ONE step in sequence</li>
+                    <li><strong>After WIN:</strong> Move back TWO steps in sequence</li>
+                    <li><strong>If below step 0:</strong> Reset to step 0</li>
+                    <li><strong>Risk Level:</strong> Medium - slower escalation than Martingale</li>
+                </ul>
+                <div class="tip">
+                    <strong>Sequence:</strong> 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...<br><br>
+                    <strong>Example:</strong> Base ₱100<br>
+                    Hand 1: Bet ₱100 (×1), LOSE → index=1<br>
+                    Hand 2: Bet ₱100 (×1), LOSE → index=2<br>
+                    Hand 3: Bet ₱200 (×2), LOSE → index=3<br>
+                    Hand 4: Bet ₱300 (×3), WIN → index=1 (back 2 steps)<br>
+                    Hand 5: Bet ₱100 (×1), WIN → index=0, RESET!
+                </div>
+
+                <h2>5. 1-3-2-4 System (Fixed Sequence)</h2>
+                <p>Bet in a fixed sequence: 1 unit → 3 units → 2 units → 4 units.</p>
+                <ul>
+                    <li><strong>After WIN:</strong> Move to next step in sequence</li>
+                    <li><strong>After LOSS:</strong> Reset to step 0 (1 unit)</li>
+                    <li><strong>After completing step 4:</strong> Reset to step 0</li>
+                    <li><strong>Risk Level:</strong> Medium - clever profit protection at step 3</li>
+                </ul>
+                <div class="tip">
+                    <strong>The Magic:</strong> Step 3 is only 2 units (not 4), so if you lose at step 4 you still keep profit!<br><br>
+                    <strong>Example:</strong> Base ₱100<br>
+                    Step 0: Bet ₱100 (×1), WIN → step=1, Balance: +₱100<br>
+                    Step 1: Bet ₱300 (×3), WIN → step=2, Balance: +₱400<br>
+                    Step 2: Bet ₱200 (×2), WIN → step=3, Balance: +₱600<br>
+                    Step 3: Bet ₱400 (×4), LOSE → step=0, Balance: +₱200 (still profit!)<br><br>
+                    <strong>Full sequence win:</strong> 1+3+2+4 = 10 units profit!
                 </div>
 
                 <h2>Quick Reference</h2>
@@ -947,29 +779,69 @@
                         <thead>
                             <tr>
                                 <th>System</th>
-                                <th>Risk Level</th>
-                                <th>Bet Growth</th>
-                                <th>Recovery Speed</th>
+                                <th>Type</th>
+                                <th>After Win</th>
+                                <th>After Loss</th>
+                                <th>Risk</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>Flat Betting</td><td>Low</td><td>None</td><td>Slow</td></tr>
-                            <tr><td>Paroli</td><td>Low–Medium</td><td>After wins</td><td>Moderate</td></tr>
-                            <tr><td>1-3-2-4</td><td>Medium</td><td>Structured</td><td>Moderate</td></tr>
-                            <tr><td>D'Alembert</td><td>Medium–High</td><td>After losses</td><td>Moderate</td></tr>
-                            <tr><td>Martingale</td><td>High</td><td>After losses</td><td>Fast (if successful)</td></tr>
+                            <tr><td>Flat</td><td>None</td><td>Same bet</td><td>Same bet</td><td>Low</td></tr>
+                            <tr><td>Martingale</td><td>Negative</td><td>Reset to base</td><td>Double bet</td><td>High</td></tr>
+                            <tr><td>Paroli</td><td>Positive</td><td>Double (max 3×)</td><td>Reset to base</td><td>Low</td></tr>
+                            <tr><td>Fibonacci</td><td>Negative</td><td>Back 2 steps</td><td>Forward 1 step</td><td>Medium</td></tr>
+                            <tr><td>1-3-2-4</td><td>Fixed</td><td>Next step</td><td>Reset to step 0</td><td>Medium</td></tr>
                         </tbody>
                     </table>
                 </div>
 
+                <h2>Bankroll Management</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Recommended</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Session Budget</strong></td><td>₱5,000</td><td>Total amount for the session</td></tr>
+                            <tr><td><strong>Unit Size</strong></td><td>₱100 (2%)</td><td>1-2% of bankroll</td></tr>
+                            <tr><td><strong>Stop-Loss</strong></td><td>50%</td><td>Stop when down ₱2,500</td></tr>
+                            <tr><td><strong>Win Goal</strong></td><td>+30-50%</td><td>Stop when up ₱1,500-2,500</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2>House Edge</h2>
+                <ul>
+                    <li><strong>Banker:</strong> 1.06% (best bet)</li>
+                    <li><strong>Player:</strong> 1.24%</li>
+                    <li><strong>Tie:</strong> ~14% (avoid!)</li>
+                </ul>
+
                 <p style="margin-top: 32px; padding: 16px; background: var(--color-bg); border-radius: 8px; font-style: italic; color: var(--color-text-light);">
-                    This app is for educational and entertainment purposes only. Gambling involves risk—never wager more than you can afford to lose.
+                    This app is for educational and entertainment purposes only. Gambling involves risk - never wager more than you can afford to lose.
                 </p>
             </div>
         </div>
     </div>
 
     <script>
+        // =====================
+        // UTILITY FUNCTIONS
+        // =====================
+        function formatPeso(amount) {
+            const absAmount = Math.abs(Math.round(amount));
+            const formatted = absAmount.toLocaleString('en-PH');
+            return (amount < 0 ? '-₱' : '₱') + formatted;
+        }
+
+        // Fibonacci sequence
+        const FIBONACCI = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987];
+        const SEQUENCE_1324 = [1, 3, 2, 4];
+
         // =====================
         // TAB NAVIGATION
         // =====================
@@ -981,95 +853,135 @@
         }
 
         // =====================
-        // STRATEGY TRACKER
+        // BETTING SYSTEM LOGIC
         // =====================
-        let state = {
-            initialBankroll: 200,
-            currentBankroll: 200,
-            baseBet: 5,
-            maxBet: 200,
-            system: 'fixed',
-            strategy: 'banker',
+
+        // FLAT BETTING: Same bet every hand
+        function flatBetting(state, result) {
+            return { nextBet: state.baseBet };
+        }
+
+        // MARTINGALE: Double after LOSS, reset after WIN
+        function martingale(state, result) {
+            if (result === 'win') {
+                return { nextBet: state.baseBet, consecutiveLosses: 0 };
+            } else {
+                const newLosses = (state.consecutiveLosses || 0) + 1;
+                const nextBet = Math.min(state.baseBet * Math.pow(2, newLosses), state.maxBet);
+                return { nextBet, consecutiveLosses: newLosses };
+            }
+        }
+
+        // PAROLI: Double after WIN (max 3), reset after LOSS
+        function paroli(state, result) {
+            if (result === 'win') {
+                const newWins = (state.consecutiveWins || 0) + 1;
+                if (newWins >= 3) {
+                    return { nextBet: state.baseBet, consecutiveWins: 0 };
+                } else {
+                    const nextBet = Math.min(state.baseBet * Math.pow(2, newWins), state.maxBet);
+                    return { nextBet, consecutiveWins: newWins };
+                }
+            } else {
+                return { nextBet: state.baseBet, consecutiveWins: 0 };
+            }
+        }
+
+        // FIBONACCI: Forward 1 on LOSS, back 2 on WIN
+        function fibonacci(state, result) {
+            let fibIndex = state.fibIndex || 0;
+            if (result === 'win') {
+                fibIndex = Math.max(0, fibIndex - 2);
+            } else {
+                fibIndex = Math.min(fibIndex + 1, FIBONACCI.length - 1);
+            }
+            const nextBet = Math.min(state.baseBet * FIBONACCI[fibIndex], state.maxBet);
+            return { nextBet, fibIndex };
+        }
+
+        // 1-3-2-4: Fixed sequence, reset on LOSS or completion
+        function oneThreeTwoFour(state, result) {
+            let stepIndex = state.stepIndex || 0;
+            if (result === 'win') {
+                stepIndex = (stepIndex + 1) % 4;
+            } else {
+                stepIndex = 0;
+            }
+            const nextBet = Math.min(state.baseBet * SEQUENCE_1324[stepIndex], state.maxBet);
+            return { nextBet, stepIndex };
+        }
+
+        // Apply system based on type
+        function applySystem(systemType, state, result) {
+            switch (systemType) {
+                case 'flat': return flatBetting(state, result);
+                case 'martingale': return martingale(state, result);
+                case 'paroli': return paroli(state, result);
+                case 'fibonacci': return fibonacci(state, result);
+                case '1324': return oneThreeTwoFour(state, result);
+                default: return flatBetting(state, result);
+            }
+        }
+
+        // =====================
+        // STRATEGY TRACKER STATE
+        // =====================
+        let trackerState = {
+            initialBankroll: 5000,
+            currentBankroll: 5000,
+            baseBet: 100,
+            maxBet: 10000,
+            system: 'flat',
+            betPreference: 'banker',
             hands: [],
-            nextBetCalc: 5,
-            systemSequence: [1, 3, 2, 4],
-            sequenceIndex: 0,
-            martingaleLevel: 0,
-            dalembert: 0
+            nextBet: 100,
+            consecutiveLosses: 0,
+            consecutiveWins: 0,
+            fibIndex: 0,
+            stepIndex: 0
         };
 
         const systemInfo = {
-            fixed: {
-                title: 'Fixed Bet',
-                desc: 'Same bet every hand. Safest for learning, limits both wins and losses.'
-            },
-            paroli: {
-                title: 'Paroli (Progressive)',
-                desc: 'After each win: double the bet (1 unit → 2 units → 4 units). After 3 consecutive wins, reset to base bet. Capitalizes on streaks while minimizing loss.'
-            },
-            '1324': {
-                title: '1-3-2-4 Sequence',
-                desc: 'Bet sequence: 1 unit → 3 units → 2 units → 4 units (only advance on wins). Locks in profit on streaks.'
-            },
-            martingale: {
-                title: 'Martingale (High Risk)',
-                desc: 'Double bet after each loss until a win. Risky; can hit table limits or bankroll fast.'
-            },
-            dalembert: {
-                title: 'D\'Alembert (Medium Risk)',
-                desc: 'Increase by 1 unit after loss, decrease by 1 after win. Gradual recovery, less aggressive.'
-            }
+            flat: { title: 'Flat Betting', desc: 'Bet the same amount every hand. Safest approach.' },
+            martingale: { title: 'Martingale (High Risk)', desc: 'Double bet after each LOSS. Reset to base after WIN. Warning: Bets escalate rapidly!' },
+            paroli: { title: 'Paroli (Recommended)', desc: 'Double bet after each WIN (up to 3). Reset after LOSS. You risk house money, not yours!' },
+            fibonacci: { title: 'Fibonacci', desc: 'Use Fibonacci sequence. Forward 1 step on LOSS, back 2 steps on WIN.' },
+            '1324': { title: '1-3-2-4 System', desc: 'Bet sequence: 1→3→2→4 units. Reset on LOSS or after completing sequence.' }
         };
 
-        function setStrategy(type) {
-            state.strategy = type;
-            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            updateDisplay();
+        function setStrategy(type, btn) {
+            trackerState.betPreference = type;
+            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('betType').value = type;
+            updateTrackerDisplay();
         }
 
         function updateSystemInfo() {
-            state.system = document.getElementById('system').value;
-            const info = systemInfo[state.system];
-            const infoDiv = document.getElementById('systemInfo');
+            trackerState.system = document.getElementById('system').value;
+            const info = systemInfo[trackerState.system];
             document.getElementById('sysTitle').textContent = info.title;
             document.getElementById('sysDesc').textContent = info.desc;
-            infoDiv.classList.remove('hidden');
+            document.getElementById('systemInfo').classList.remove('hidden');
             resetSession();
         }
 
-        function calculateNextBet() {
-            const baseBet = parseInt(document.getElementById('baseBet').value) || 5;
-            const maxBet = parseInt(document.getElementById('maxBet').value) || 200;
-
-            let nextBet = baseBet;
-
-            if (state.system === 'paroli') {
-                let winStreak = 0;
-                for (let i = state.hands.length - 1; i >= 0; i--) {
-                    if (state.hands[i].result === 'win') {
-                        winStreak++;
-                    } else {
-                        break;
-                    }
-                }
-                if (winStreak >= 3) {
-                    nextBet = baseBet;
-                } else {
-                    nextBet = baseBet * Math.pow(2, winStreak);
-                }
-            } else if (state.system === '1324') {
-                nextBet = baseBet * state.systemSequence[state.sequenceIndex];
-            } else if (state.system === 'martingale') {
-                nextBet = baseBet * Math.pow(2, state.martingaleLevel);
-            } else if (state.system === 'dalembert') {
-                nextBet = Math.max(baseBet, baseBet + state.dalembert);
+        function getSystemStateText() {
+            switch (trackerState.system) {
+                case 'martingale':
+                    return `<strong>Consecutive Losses:</strong> ${trackerState.consecutiveLosses}`;
+                case 'paroli':
+                    return `<strong>Consecutive Wins:</strong> ${trackerState.consecutiveWins}/3`;
+                case 'fibonacci':
+                    return `<strong>Fibonacci Index:</strong> ${trackerState.fibIndex} (×${FIBONACCI[trackerState.fibIndex]})`;
+                case '1324':
+                    return `<strong>Step:</strong> ${trackerState.stepIndex + 1}/4 (×${SEQUENCE_1324[trackerState.stepIndex]})`;
+                default:
+                    return '';
             }
-
-            return Math.min(nextBet, maxBet);
         }
 
-        function recordWin() {
+        function recordResult(result) {
             const betAmount = parseInt(document.getElementById('betAmount').value) || 0;
             const betType = document.getElementById('betType').value;
 
@@ -1078,109 +990,117 @@
                 return;
             }
 
-            state.currentBankroll += betAmount;
-            state.hands.push({
-                type: betType,
-                amount: betAmount,
-                result: 'win',
-                bankroll: state.currentBankroll
-            });
-
-            if (state.system === 'martingale') state.martingaleLevel = 0;
-            else if (state.system === 'dalembert') state.dalembert = Math.max(0, state.dalembert - 1);
-            else if (state.system === '1324') state.sequenceIndex = (state.sequenceIndex + 1) % 4;
-
-            showMessage('Win recorded!', 'success');
-            resetBetForm();
-            updateDisplay();
-        }
-
-        function recordLoss() {
-            const betAmount = parseInt(document.getElementById('betAmount').value) || 0;
-            const betType = document.getElementById('betType').value;
-
-            if (betAmount <= 0) {
-                showMessage('Enter a valid bet amount', 'error');
+            if (result === 'loss' && trackerState.currentBankroll < betAmount) {
+                showMessage('Insufficient bankroll!', 'error');
                 return;
             }
 
-            if (state.currentBankroll < betAmount) {
-                showMessage('Insufficient bankroll! Session would be over.', 'error');
-                return;
+            // Calculate payout (Banker pays 0.95:1 due to commission)
+            let payout = 0;
+            if (result === 'win') {
+                payout = betType === 'banker' ? Math.floor(betAmount * 0.95) : betAmount;
+                trackerState.currentBankroll += payout;
+            } else {
+                payout = -betAmount;
+                trackerState.currentBankroll -= betAmount;
             }
 
-            state.currentBankroll -= betAmount;
-            state.hands.push({
+            // Record hand
+            trackerState.hands.push({
                 type: betType,
                 amount: betAmount,
-                result: 'loss',
-                bankroll: state.currentBankroll
+                result: result,
+                payout: payout,
+                bankroll: trackerState.currentBankroll
             });
 
-            if (state.system === 'martingale') state.martingaleLevel += 1;
-            else if (state.system === 'dalembert') state.dalembert += 1;
-            else if (state.system === '1324') state.sequenceIndex = 0;
+            // Update system state
+            const systemResult = applySystem(trackerState.system, trackerState, result);
+            Object.assign(trackerState, systemResult);
 
-            showMessage('Loss recorded!', 'error');
-            resetBetForm();
-            updateDisplay();
+            showMessage(result === 'win' ? `WIN! +${formatPeso(payout)}` : `LOSS: ${formatPeso(payout)}`, result === 'win' ? 'success' : 'error');
+
+            // Warning for dangerous Martingale levels
+            if (trackerState.system === 'martingale' && trackerState.consecutiveLosses >= 5) {
+                showMessage(`Warning: ${trackerState.consecutiveLosses} consecutive losses!`, 'warning');
+            }
+
+            updateTrackerDisplay();
+            document.getElementById('betAmount').value = trackerState.nextBet;
         }
 
         function undoLastBet() {
-            if (state.hands.length === 0) {
+            if (trackerState.hands.length === 0) {
                 showMessage('No bets to undo', 'error');
                 return;
             }
 
-            const lastHand = state.hands.pop();
-            if (lastHand.result === 'win') {
-                state.currentBankroll -= lastHand.amount;
-            } else {
-                state.currentBankroll += lastHand.amount;
-            }
+            const lastHand = trackerState.hands.pop();
+            trackerState.currentBankroll -= lastHand.payout;
+
+            // Recalculate system state from scratch
+            resetSystemState();
+            trackerState.hands.forEach(hand => {
+                const systemResult = applySystem(trackerState.system, trackerState, hand.result);
+                Object.assign(trackerState, systemResult);
+            });
 
             showMessage('Last bet undone', 'success');
-            resetBetForm();
-            updateDisplay();
+            updateTrackerDisplay();
+            document.getElementById('betAmount').value = trackerState.nextBet;
         }
 
-        function resetBetForm() {
-            document.getElementById('betAmount').value = calculateNextBet();
+        function resetSystemState() {
+            trackerState.consecutiveLosses = 0;
+            trackerState.consecutiveWins = 0;
+            trackerState.fibIndex = 0;
+            trackerState.stepIndex = 0;
+            trackerState.nextBet = trackerState.baseBet;
         }
 
         function resetSession() {
-            state.initialBankroll = parseInt(document.getElementById('initialBankroll').value) || 200;
-            state.currentBankroll = state.initialBankroll;
-            state.baseBet = parseInt(document.getElementById('baseBet').value) || 5;
-            state.maxBet = parseInt(document.getElementById('maxBet').value) || 200;
-            state.hands = [];
-            state.sequenceIndex = 0;
-            state.martingaleLevel = 0;
-            state.dalembert = 0;
-            resetBetForm();
-            updateDisplay();
+            trackerState.initialBankroll = parseInt(document.getElementById('initialBankroll').value) || 5000;
+            trackerState.currentBankroll = trackerState.initialBankroll;
+            trackerState.baseBet = parseInt(document.getElementById('baseBet').value) || 100;
+            trackerState.maxBet = parseInt(document.getElementById('maxBet').value) || 10000;
+            trackerState.hands = [];
+            resetSystemState();
+            updateTrackerDisplay();
+            document.getElementById('betAmount').value = trackerState.nextBet;
             showMessage('Session reset!', 'success');
         }
 
-        function updateDisplay() {
-            document.getElementById('currentBankroll').textContent = '€' + state.currentBankroll;
-            document.getElementById('totalHands').textContent = state.hands.length;
+        function updateTrackerDisplay() {
+            document.getElementById('currentBankroll').textContent = formatPeso(trackerState.currentBankroll);
+            document.getElementById('totalHands').textContent = trackerState.hands.length;
 
-            const wins = state.hands.filter(h => h.result === 'win').length;
-            const losses = state.hands.filter(h => h.result === 'loss').length;
-            const winRate = state.hands.length > 0 ? Math.round((wins / state.hands.length) * 100) : 0;
+            const wins = trackerState.hands.filter(h => h.result === 'win').length;
+            const losses = trackerState.hands.filter(h => h.result === 'loss').length;
+            const winRate = trackerState.hands.length > 0 ? Math.round((wins / trackerState.hands.length) * 100) : 0;
 
             document.getElementById('winCount').textContent = wins;
             document.getElementById('lossCount').textContent = losses;
             document.getElementById('winRate').textContent = winRate + '%';
 
-            const profitLoss = state.currentBankroll - state.initialBankroll;
+            const profitLoss = trackerState.currentBankroll - trackerState.initialBankroll;
             const profitElement = document.getElementById('profitLoss');
-            profitElement.textContent = (profitLoss >= 0 ? '€' : '-€') + Math.abs(profitLoss);
+            profitElement.textContent = formatPeso(profitLoss);
             profitElement.style.color = profitLoss >= 0 ? '#22b55e' : '#d32f2f';
 
-            document.getElementById('nextBet').textContent = '€' + calculateNextBet();
-            document.getElementById('currentStrategy').textContent = (state.strategy === 'banker' ? 'Banker' : 'Custom') + ' + ' + systemInfo[state.system].title;
+            document.getElementById('nextBet').textContent = formatPeso(trackerState.nextBet);
+
+            const strategyName = trackerState.betPreference.charAt(0).toUpperCase() + trackerState.betPreference.slice(1);
+            document.getElementById('currentStrategy').textContent = `${strategyName} + ${systemInfo[trackerState.system].title}`;
+
+            // System state display
+            const stateText = getSystemStateText();
+            const stateDiv = document.getElementById('systemState');
+            if (stateText && trackerState.system !== 'flat') {
+                stateDiv.innerHTML = stateText;
+                stateDiv.classList.remove('hidden');
+            } else {
+                stateDiv.classList.add('hidden');
+            }
 
             updateHistoryTable();
         }
@@ -1188,57 +1108,37 @@
         function updateHistoryTable() {
             const tbody = document.getElementById('historyTable');
 
-            if (state.hands.length === 0) {
+            if (trackerState.hands.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--color-text-light);">No bets yet. Start recording!</td></tr>';
                 return;
             }
 
-            tbody.innerHTML = state.hands.map((hand, i) => `
+            tbody.innerHTML = trackerState.hands.slice().reverse().map((hand, i) => `
                 <tr>
-                    <td>${i + 1}</td>
+                    <td>${trackerState.hands.length - i}</td>
                     <td>${hand.type.charAt(0).toUpperCase() + hand.type.slice(1)}</td>
-                    <td>€${hand.amount}</td>
+                    <td>${formatPeso(hand.amount)}</td>
                     <td><span class="${hand.result === 'win' ? 'result-win' : 'result-loss'}">${hand.result.toUpperCase()}</span></td>
-                    <td>€${hand.bankroll}</td>
-                    <td><button class="btn-secondary btn-small" onclick="deleteHand(${i})">Delete</button></td>
+                    <td style="color: ${hand.payout >= 0 ? '#22b55e' : '#d32f2f'}">${formatPeso(hand.payout)}</td>
+                    <td>${formatPeso(hand.bankroll)}</td>
                 </tr>
             `).join('');
-        }
-
-        function deleteHand(index) {
-            state.hands.splice(index, 1);
-            recalculateBankroll();
-            updateDisplay();
-        }
-
-        function recalculateBankroll() {
-            state.currentBankroll = state.initialBankroll;
-            state.hands.forEach(hand => {
-                if (hand.result === 'win') state.currentBankroll += hand.amount;
-                else state.currentBankroll -= hand.amount;
-            });
         }
 
         function showMessage(text, type) {
             const msg = document.getElementById('message');
             msg.textContent = text;
-            msg.className = type === 'error' ? 'error-message' : 'success-message';
-            setTimeout(() => msg.textContent = '', 3000);
+            msg.className = type === 'error' ? 'error-message' : (type === 'warning' ? 'warning-message' : 'success-message');
+            setTimeout(() => msg.textContent = '', 4000);
         }
 
         // =====================
         // SIMULATOR
         // =====================
-        const CARD_VALUES = {
-            'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 0, 'J': 0, 'Q': 0, 'K': 0
-        };
+        const CARD_VALUES = { 'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 0, 'J': 0, 'Q': 0, 'K': 0 };
         const SUITS = ['♠', '♥', '♦', '♣'];
 
-        let simState = {
-            hands: [],
-            currentBankroll: 0,
-            totalWagered: 0
-        };
+        let simState = { hands: [] };
 
         function createDeck() {
             const cards = [];
@@ -1275,27 +1175,34 @@
             let playerScore = calculateScore(playerCards);
             let bankerScore = calculateScore(bankerCards);
 
+            // Natural check
             if (playerScore >= 8 || bankerScore >= 8) {
                 return { playerCards, bankerCards, playerScore, bankerScore, deck };
             }
 
-            if (playerScore < 6) {
+            // Player draws on 0-5
+            let playerThird = null;
+            if (playerScore <= 5) {
                 playerCards.push(deck.pop());
+                playerThird = getCardValue(playerCards[2]);
                 playerScore = calculateScore(playerCards);
             }
 
-            if (playerCards.length === 2) {
-                if (bankerScore < 6) {
+            // Banker drawing rules
+            if (playerThird === null) {
+                if (bankerScore <= 5) {
                     bankerCards.push(deck.pop());
                     bankerScore = calculateScore(bankerCards);
                 }
             } else {
-                const playerThird = getCardValue(playerCards[2]);
-                if (bankerScore < 3 ||
-                    (bankerScore === 3 && playerThird !== 8) ||
-                    (bankerScore === 4 && playerThird >= 2 && playerThird <= 7) ||
-                    (bankerScore === 5 && playerThird >= 4 && playerThird <= 7) ||
-                    (bankerScore === 6 && playerThird >= 6 && playerThird <= 7)) {
+                let bankerDraws = false;
+                if (bankerScore <= 2) bankerDraws = true;
+                else if (bankerScore === 3 && playerThird !== 8) bankerDraws = true;
+                else if (bankerScore === 4 && playerThird >= 2 && playerThird <= 7) bankerDraws = true;
+                else if (bankerScore === 5 && playerThird >= 4 && playerThird <= 7) bankerDraws = true;
+                else if (bankerScore === 6 && playerThird >= 6 && playerThird <= 7) bankerDraws = true;
+
+                if (bankerDraws) {
                     bankerCards.push(deck.pop());
                     bankerScore = calculateScore(bankerCards);
                 }
@@ -1306,56 +1213,62 @@
 
         function playOneHand() {
             const numDecks = parseInt(document.getElementById('numDecks').value) || 6;
-            const bet = parseInt(document.getElementById('singleBet').value) || 10;
+            const bet = parseInt(document.getElementById('singleBet').value) || 100;
             const betType = document.getElementById('singleBetType').value;
-            const commission = parseInt(document.getElementById('commission').value) || 5;
+            const commission = parseFloat(document.getElementById('commission').value) || 5;
 
             let deck = [];
-            for (let i = 0; i < numDecks; i++) {
-                deck = deck.concat(createDeck());
-            }
+            for (let i = 0; i < numDecks; i++) deck = deck.concat(createDeck());
             deck = shuffleDeck(deck);
 
             const hand = dealHand(deck);
             const { playerCards, bankerCards, playerScore, bankerScore } = hand;
 
-            let result = '';
+            let winner = '';
             let payout = 0;
 
             if (playerScore > bankerScore) {
-                result = 'Player Wins';
-                payout = betType === 'player' ? bet * 2 : 0;
+                winner = 'Player';
+                if (betType === 'player') payout = bet;
+                else if (betType === 'tie') payout = -bet;
+                else payout = -bet;
             } else if (bankerScore > playerScore) {
-                result = 'Banker Wins';
-                payout = betType === 'banker' ? bet * 2 * (1 - commission / 100) : 0;
+                winner = 'Banker';
+                if (betType === 'banker') payout = bet * (1 - commission / 100);
+                else if (betType === 'tie') payout = -bet;
+                else payout = -bet;
             } else {
-                result = 'Tie';
-                payout = betType === 'tie' ? bet * 9 : bet;
+                winner = 'Tie';
+                if (betType === 'tie') payout = bet * 8;
+                else payout = 0;
             }
 
+            // Display
             const resultDiv = document.getElementById('singleHandResult');
-            document.getElementById('handOutcome').textContent = result;
-            document.getElementById('bankerCards').innerHTML = bankerCards.map(c => `<span class="card-badge">${c}</span>`).join('');
-            document.getElementById('bankerTotal').textContent = bankerScore;
+            document.getElementById('handOutcome').textContent = `${winner} Wins!`;
+            document.getElementById('handOutcome').style.color = winner === 'Banker' ? '#22b55e' : (winner === 'Player' ? '#1f5c7f' : '#d32f2f');
+
             document.getElementById('playerCards').innerHTML = playerCards.map(c => `<span class="card-badge">${c}</span>`).join('');
             document.getElementById('playerTotal').textContent = playerScore;
+            document.getElementById('bankerCards').innerHTML = bankerCards.map(c => `<span class="card-badge">${c}</span>`).join('');
+            document.getElementById('bankerTotal').textContent = bankerScore;
 
             let message = '';
-            if (payout > bet) {
-                message = `You won €${(payout - bet).toFixed(2)}!`;
-                document.getElementById('winLossMessage').innerHTML = `<div class="success-message" style="text-align: center; font-weight: 600; margin-top: 16px;">+€${(payout - bet).toFixed(2)}</div>`;
-            } else if (payout < bet) {
-                message = `You lost €${bet - payout}.`;
-                document.getElementById('winLossMessage').innerHTML = `<div class="error-message" style="text-align: center; font-weight: 600; margin-top: 16px;">-€${bet - payout}</div>`;
+            if (payout > 0) {
+                message = `You WIN ${formatPeso(payout)}!`;
+                document.getElementById('winLossMessage').innerHTML = `<div class="success-message" style="text-align: center; font-weight: 600; margin-top: 16px;">+${formatPeso(payout)}</div>`;
+            } else if (payout < 0) {
+                message = `You LOSE ${formatPeso(Math.abs(payout))}`;
+                document.getElementById('winLossMessage').innerHTML = `<div class="error-message" style="text-align: center; font-weight: 600; margin-top: 16px;">${formatPeso(payout)}</div>`;
             } else {
-                message = `Push - Your bet returned.`;
-                document.getElementById('winLossMessage').innerHTML = `<div style="text-align: center; color: var(--color-text-light); font-weight: 600; margin-top: 16px;">€0</div>`;
+                message = `PUSH - Bet returned`;
+                document.getElementById('winLossMessage').innerHTML = `<div style="text-align: center; color: var(--color-text-light); font-weight: 600; margin-top: 16px;">₱0</div>`;
             }
 
             document.getElementById('resultMessage').textContent = message;
             resultDiv.classList.remove('hidden');
 
-            simState.hands.push({ banker: bankerScore, player: playerScore, result });
+            simState.hands.push({ winner, banker: bankerScore, player: playerScore, bet, betType, result: payout > 0 ? 'win' : (payout < 0 ? 'loss' : 'push') });
             if (simState.hands.length > 20) simState.hands.shift();
             updateSimHistoryTable();
         }
@@ -1363,92 +1276,102 @@
         function runSimulation() {
             const numDecks = parseInt(document.getElementById('numDecks').value) || 6;
             const handsCount = parseInt(document.getElementById('handsToSim').value) || 100;
-            const baseBet = parseInt(document.getElementById('baseBetSim').value) || 10;
-            const system = document.getElementById('systemSim').value;
-            const commission = parseInt(document.getElementById('commission').value) || 5;
+            const baseBet = parseInt(document.getElementById('baseBetSim').value) || 100;
+            const maxBet = parseInt(document.getElementById('maxBetSim').value) || 10000;
+            const systemType = document.getElementById('systemSim').value;
+            const betOn = document.getElementById('simBetOn').value;
+            const commission = parseFloat(document.getElementById('commission').value) || 5;
 
             let deck = [];
-            for (let i = 0; i < numDecks; i++) {
-                deck = deck.concat(createDeck());
-            }
+            for (let i = 0; i < numDecks; i++) deck = deck.concat(createDeck());
             deck = shuffleDeck(deck);
 
-            let bankroll = 0;
+            let balance = 0;
             let totalWagered = 0;
+            let maxBetUsed = baseBet;
             let bankerWins = 0, playerWins = 0, ties = 0;
+            let betWins = 0, betLosses = 0;
+
+            // System state
+            let sysState = { baseBet, maxBet, consecutiveLosses: 0, consecutiveWins: 0, fibIndex: 0, stepIndex: 0 };
             let currentBet = baseBet;
-            let winStreak = 0;
+
+            // Initialize for 1-3-2-4
+            if (systemType === '1324') currentBet = baseBet * SEQUENCE_1324[0];
 
             simState.hands = [];
+            let tableLimitHit = false;
 
             for (let i = 0; i < handsCount; i++) {
                 if (deck.length < 20) {
                     deck = [];
-                    for (let j = 0; j < numDecks; j++) {
-                        deck = deck.concat(createDeck());
-                    }
+                    for (let j = 0; j < numDecks; j++) deck = deck.concat(createDeck());
                     deck = shuffleDeck(deck);
                 }
+
+                if (currentBet > maxBetUsed) maxBetUsed = currentBet;
 
                 const hand = dealHand(deck);
                 const { playerScore, bankerScore } = hand;
 
-                let betWon = false;
+                let winner = '';
+                let betResult = 'loss';
                 let payout = 0;
 
-                if (bankerScore > playerScore) {
-                    bankerWins++;
-                    if (system === 'banker' || system === 'fixed' || system === 'paroli') {
-                        betWon = true;
-                        payout = currentBet * (1 - commission / 100);
-                    }
-                } else if (playerScore > bankerScore) {
+                if (playerScore > bankerScore) {
+                    winner = 'Player';
                     playerWins++;
-                    if (system === 'player' || system === 'fixed' || system === 'paroli') {
-                        betWon = true;
-                        payout = currentBet;
-                    }
+                    if (betOn === 'player') { betResult = 'win'; payout = currentBet; betWins++; }
+                    else { payout = -currentBet; betLosses++; }
+                } else if (bankerScore > playerScore) {
+                    winner = 'Banker';
+                    bankerWins++;
+                    if (betOn === 'banker') { betResult = 'win'; payout = currentBet * (1 - commission / 100); betWins++; }
+                    else { payout = -currentBet; betLosses++; }
                 } else {
+                    winner = 'Tie';
                     ties++;
+                    payout = 0;
+                    betResult = 'push';
                 }
 
                 totalWagered += currentBet;
+                balance += payout;
 
-                if (betWon) {
-                    bankroll += payout;
-                    winStreak++;
-                } else {
-                    bankroll -= currentBet;
-                    winStreak = 0;
+                // Update system (skip ties for most systems)
+                if (winner !== 'Tie') {
+                    const systemResult = applySystem(systemType, { ...sysState, baseBet, maxBet }, betResult);
+                    Object.assign(sysState, systemResult);
+                    currentBet = sysState.nextBet || baseBet;
                 }
 
-                if (system === 'paroli') {
-                    if (betWon) {
-                        if (winStreak >= 3) {
-                            currentBet = baseBet;
-                            winStreak = 0;
-                        } else {
-                            currentBet = baseBet * Math.pow(2, winStreak);
-                        }
-                    } else {
-                        currentBet = baseBet;
-                    }
-                }
+                if (currentBet >= maxBet && !tableLimitHit) tableLimitHit = true;
 
-                simState.hands.push({ banker: bankerScore, player: playerScore, result: bankerScore > playerScore ? 'Banker' : (playerScore > bankerScore ? 'Player' : 'Tie') });
+                simState.hands.push({ winner, banker: bankerScore, player: playerScore, bet: currentBet, betType: betOn, result: betResult });
             }
 
+            // Update display
             document.getElementById('simHandsPlayed').textContent = handsCount;
-            document.getElementById('simTotalWagered').textContent = totalWagered.toFixed(0);
-            document.getElementById('simFinalBankroll').textContent = bankroll.toFixed(2);
+            document.getElementById('simTotalWagered').textContent = formatPeso(totalWagered);
+            document.getElementById('simMaxBetUsed').textContent = formatPeso(maxBetUsed);
             document.getElementById('simBankerWins').textContent = bankerWins;
             document.getElementById('simPlayerWins').textContent = playerWins;
             document.getElementById('simTies').textContent = ties;
+            document.getElementById('simBetWins').textContent = betWins;
+            document.getElementById('simBetLosses').textContent = betLosses;
 
-            const roi = totalWagered > 0 ? ((bankroll / totalWagered) * 100).toFixed(2) : 0;
-            document.getElementById('simProfitLoss').textContent = (bankroll >= 0 ? '€' : '-€') + Math.abs(bankroll).toFixed(2);
+            const roi = totalWagered > 0 ? ((balance / totalWagered) * 100).toFixed(2) : 0;
+            document.getElementById('simProfitLoss').textContent = formatPeso(balance);
+            document.getElementById('simProfitLoss').style.color = balance >= 0 ? '#22b55e' : '#d32f2f';
             document.getElementById('simROI').textContent = roi + '%';
-            document.getElementById('simProfitLoss').style.color = bankroll >= 0 ? '#22b55e' : '#d32f2f';
+
+            const warningDiv = document.getElementById('simWarning');
+            if (tableLimitHit && systemType === 'martingale') {
+                warningDiv.textContent = 'Warning: Table limit was reached during simulation!';
+                warningDiv.classList.remove('hidden');
+            } else {
+                warningDiv.classList.add('hidden');
+            }
 
             simState.hands = simState.hands.slice(-20);
             updateSimHistoryTable();
@@ -1457,38 +1380,50 @@
         function updateSimHistoryTable() {
             const tbody = document.getElementById('simHistoryTable');
             if (simState.hands.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--color-text-light);">No hands yet.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--color-text-light);">No hands yet.</td></tr>';
                 return;
             }
             tbody.innerHTML = simState.hands.map((hand, i) => `
                 <tr>
                     <td>${i + 1}</td>
-                    <td><span class="result-${hand.result.toLowerCase()}">${hand.result}</span></td>
-                    <td>${hand.banker}</td>
+                    <td><span class="result-${hand.winner.toLowerCase()}">${hand.winner}</span></td>
                     <td>${hand.player}</td>
+                    <td>${hand.banker}</td>
+                    <td>${formatPeso(hand.bet)} on ${hand.betType}</td>
+                    <td><span class="${hand.result === 'win' ? 'result-win' : (hand.result === 'loss' ? 'result-loss' : '')}">${hand.result.toUpperCase()}</span></td>
                 </tr>
             `).join('');
         }
 
         function resetSimulation() {
-            simState = { hands: [], currentBankroll: 0, totalWagered: 0 };
+            simState = { hands: [] };
             document.getElementById('singleHandResult').classList.add('hidden');
             document.getElementById('simHandsPlayed').textContent = '0';
-            document.getElementById('simTotalWagered').textContent = '0';
-            document.getElementById('simFinalBankroll').textContent = '0';
+            document.getElementById('simTotalWagered').textContent = '₱0';
+            document.getElementById('simMaxBetUsed').textContent = '₱0';
             document.getElementById('simBankerWins').textContent = '0';
             document.getElementById('simPlayerWins').textContent = '0';
             document.getElementById('simTies').textContent = '0';
-            document.getElementById('simProfitLoss').textContent = '€0';
+            document.getElementById('simProfitLoss').textContent = '₱0';
             document.getElementById('simROI').textContent = '0%';
+            document.getElementById('simBetWins').textContent = '0';
+            document.getElementById('simBetLosses').textContent = '0';
+            document.getElementById('simWarning').classList.add('hidden');
             updateSimHistoryTable();
+        }
+
+        // =====================
+        // DISCLAIMER MODAL
+        // =====================
+        function acceptDisclaimer() {
+            document.getElementById('disclaimerModal').classList.add('hidden');
         }
 
         // =====================
         // INITIALIZE
         // =====================
         updateSystemInfo();
-        updateDisplay();
+        updateTrackerDisplay();
         updateSimHistoryTable();
     </script>
 </body>
