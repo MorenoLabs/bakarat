@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baccarat Simulator</title>
+    <style>
+        :root {
+            --color-primary: #1f5c7f;
+            --color-primary-hover: #174a67;
+            --color-success: #22b55e;
+            --color-error: #d32f2f;
+            --color-bg: #f5f5f0;
+            --color-surface: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-light: #666666;
+            --color-border: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 24px 20px;
+            margin: -20px -20px 30px -20px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h2 {
+            margin: 0 0 16px 0;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--color-text);
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(31, 92, 127, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 12px;
+            flex: none;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stat-box {
+            background: var(--color-bg);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--color-text-light);
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--color-bg);
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        tr:hover {
+            background-color: var(--color-bg);
+        }
+
+        .result-banker {
+            color: var(--color-success);
+            font-weight: 600;
+        }
+
+        .result-player {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .result-tie {
+            color: var(--color-error);
+            font-weight: 600;
+        }
+
+        .summary-box {
+            background: var(--color-bg);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 16px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .summary-box strong {
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .card-display {
+            background: var(--color-bg);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .hand-result {
+            background: linear-gradient(135deg, #f5f5f0 0%, #ffffff 100%);
+            padding: 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .hand-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+
+        .hand-section h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: var(--color-primary);
+        }
+
+        .hand-section p {
+            margin: 4px 0;
+            font-size: 13px;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: 2px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .success-message {
+            color: var(--color-success);
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .error-message {
+            color: var(--color-error);
+            font-size: 13px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎰 Baccarat Simulator</h1>
+        <div class="header-subtitle">Simulate real baccarat hands with accurate card dealing and odds</div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Simulator Controls -->
+            <div class="card">
+                <h2>Simulation Settings</h2>
+                
+                <div class="form-group">
+                    <label>Number of Decks</label>
+                    <select id="numDecks">
+                        <option value="1">1 Deck</option>
+                        <option value="6" selected>6 Decks (Standard)</option>
+                        <option value="8">8 Decks</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Banker Commission (%)</label>
+                    <input type="number" id="commission" value="5" min="0" max="10" step="0.5">
+                </div>
+
+                <div class="form-group">
+                    <label>Hands to Simulate</label>
+                    <input type="number" id="handsToSim" value="100" min="1" max="10000" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Base Bet (€)</label>
+                    <input type="number" id="baseBetSim" value="10" min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Betting System</label>
+                    <select id="systemSim">
+                        <option value="banker">Always Banker</option>
+                        <option value="player">Always Player</option>
+                        <option value="paroli">Paroli (1→2→4→reset)</option>
+                        <option value="fixed">Fixed Bet</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-primary" onclick="runSimulation()">Run Simulation</button>
+                    <button class="btn-secondary" onclick="resetSimulation()">Reset</button>
+                </div>
+            </div>
+
+            <!-- Simulation Stats -->
+            <div class="card">
+                <h2>Simulation Results</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Hands Played</div>
+                        <div class="stat-value" id="simHandsPlayed">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Total Wagered (€)</div>
+                        <div class="stat-value" id="simTotalWagered">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Final Bankroll (€)</div>
+                        <div class="stat-value" id="simFinalBankroll">0</div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-label">Banker Wins</div>
+                        <div class="stat-value result-banker" id="simBankerWins">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Player Wins</div>
+                        <div class="stat-value result-player" id="simPlayerWins">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">Ties</div>
+                        <div class="stat-value result-tie" id="simTies">0</div>
+                    </div>
+                </div>
+
+                <div class="summary-box">
+                    <div><strong>Net Profit/Loss:</strong> <span id="simProfitLoss">€0</span></div>
+                    <div style="margin-top: 8px;"><strong>ROI:</strong> <span id="simROI">0%</span></div>
+                    <div style="margin-top: 8px;"><strong>House Edge Effect:</strong> <span id="simHouseEdge">~1.06%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Hand Simulator -->
+        <div class="card">
+            <h2>Play Single Hand</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div class="form-group">
+                    <label>Your Bet (€)</label>
+                    <input type="number" id="singleBet" value="10" min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label>Bet On</label>
+                    <select id="singleBetType">
+                        <option value="banker">Banker</option>
+                        <option value="player">Player</option>
+                        <option value="tie">Tie</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-primary" onclick="playOneHand()">Deal Hand</button>
+            </div>
+
+            <div id="singleHandResult" class="hidden">
+                <div class="hand-result">
+                    <h3 id="handOutcome" style="margin: 0 0 16px 0;"></h3>
+                    
+                    <div class="hand-cards">
+                        <div class="hand-section">
+                            <h4>Banker's Hand</h4>
+                            <p><span id="bankerCards"></span></p>
+                            <p style="font-weight: 600; margin-top: 8px;">Total: <span id="bankerTotal">0</span></p>
+                        </div>
+                        <div class="hand-section">
+                            <h4>Player's Hand</h4>
+                            <p><span id="playerCards"></span></p>
+                            <p style="font-weight: 600; margin-top: 8px;">Total: <span id="playerTotal">0</span></p>
+                        </div>
+                    </div>
+
+                    <div class="card-display" id="resultMessage"></div>
+                    <div id="winLossMessage"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simulation History -->
+        <div class="card">
+            <h2>Last 20 Simulated Hands</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hand</th>
+                            <th>Result</th>
+                            <th>Banker Score</th>
+                            <th>Player Score</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="simHistoryTable">
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: var(--color-text-light);">No hands yet. Run simulation or play a hand!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Strategy Info -->
+        <div class="card">
+            <h2>💡 How It Works</h2>
+            <ul style="margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--color-text-light);">
+                <li><strong>Card Values:</strong> 0-9 worth face value, 10-K worth 0 points. Total = last digit of sum.</li>
+                <li><strong>Natural:</strong> First 2 cards total 8 or 9 = automatic win (no 3rd card).</li>
+                <li><strong>Third Card Rules:</strong> Complex rules determine if Banker or Player draws a 3rd card.</li>
+                <li><strong>Banker Wins:</strong> Pays even money minus 5% commission.</li>
+                <li><strong>Player Wins:</strong> Pays even money (no commission).</li>
+                <li><strong>Tie:</strong> Returns your bet (no profit/loss) but high house edge (~14%).</li>
+                <li><strong>Paroli in Sim:</strong> Doubles bet after wins (1→2→4), resets after loss or 3 wins.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const CARD_VALUES = {
+            'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 0, 'J': 0, 'Q': 0, 'K': 0
+        };
+        const SUITS = ['♠', '♥', '♦', '♣'];
+
+        let simState = {
+            hands: [],
+            currentBankroll: 0,
+            totalWagered: 0
+        };
+
+        function createDeck() {
+            const cards = [];
+            const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+            for (let i = 0; i < ranks.length; i++) {
+                for (let j = 0; j < SUITS.length; j++) {
+                    cards.push(ranks[i] + SUITS[j]);
+                }
+            }
+            return cards;
+        }
+
+        function shuffleDeck(deck) {
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+            return deck;
+        }
+
+        function getCardValue(card) {
+            const rank = card.slice(0, -1);
+            return CARD_VALUES[rank] || 0;
+        }
+
+        function calculateScore(cards) {
+            return cards.reduce((sum, card) => sum + getCardValue(card), 0) % 10;
+        }
+
+        function dealHand(deck) {
+            const playerCards = [deck.pop(), deck.pop()];
+            const bankerCards = [deck.pop(), deck.pop()];
+
+            let playerScore = calculateScore(playerCards);
+            let bankerScore = calculateScore(bankerCards);
+
+            // Check for natural (8 or 9)
+            if (playerScore >= 8 || bankerScore >= 8) {
+                return { playerCards, bankerCards, playerScore, bankerScore, deck };
+            }
+
+            // Player draws if score < 6
+            if (playerScore < 6) {
+                playerCards.push(deck.pop());
+                playerScore = calculateScore(playerCards);
+            }
+
+            // Banker draws based on rules
+            if (playerCards.length === 2) {
+                // Banker never draws if score > 6
+                if (bankerScore < 6) {
+                    bankerCards.push(deck.pop());
+                    bankerScore = calculateScore(bankerCards);
+                }
+            } else {
+                // Player drew a third card
+                const playerThird = getCardValue(playerCards[2]);
+                if (bankerScore < 3 || 
+                    (bankerScore === 3 && playerThird !== 8) ||
+                    (bankerScore === 4 && playerThird >= 2 && playerThird <= 7) ||
+                    (bankerScore === 5 && playerThird >= 4 && playerThird <= 7) ||
+                    (bankerScore === 6 && playerThird >= 6 && playerThird <= 7)) {
+                    bankerCards.push(deck.pop());
+                    bankerScore = calculateScore(bankerCards);
+                }
+            }
+
+            return { playerCards, bankerCards, playerScore, bankerScore, deck };
+        }
+
+        function playOneHand() {
+            const numDecks = parseInt(document.getElementById('numDecks').value) || 6;
+            const bet = parseInt(document.getElementById('singleBet').value) || 10;
+            const betType = document.getElementById('singleBetType').value;
+            const commission = parseInt(document.getElementById('commission').value) || 5;
+
+            let deck = [];
+            for (let i = 0; i < numDecks; i++) {
+                deck = deck.concat(createDeck());
+            }
+            deck = shuffleDeck(deck);
+
+            const hand = dealHand(deck);
+            const { playerCards, bankerCards, playerScore, bankerScore } = hand;
+
+            let result = '';
+            let payout = 0;
+
+            if (playerScore > bankerScore) {
+                result = 'Player Wins';
+                payout = betType === 'player' ? bet * 2 : 0;
+            } else if (bankerScore > playerScore) {
+                result = 'Banker Wins';
+                payout = betType === 'banker' ? bet * 2 * (1 - commission / 100) : 0;
+            } else {
+                result = 'Tie';
+                payout = betType === 'tie' ? bet * 9 : bet; // Tie returns bet for non-tie bets
+            }
+
+            // Display result
+            const resultDiv = document.getElementById('singleHandResult');
+            document.getElementById('handOutcome').textContent = result;
+            document.getElementById('bankerCards').innerHTML = bankerCards.map(c => `<span class="card-badge">${c}</span>`).join('');
+            document.getElementById('bankerTotal').textContent = bankerScore;
+            document.getElementById('playerCards').innerHTML = playerCards.map(c => `<span class="card-badge">${c}</span>`).join('');
+            document.getElementById('playerTotal').textContent = playerScore;
+
+            let message = '';
+            if (payout > bet) {
+                message = `You won €${payout - bet}!`;
+                document.getElementById('winLossMessage').innerHTML = `<div class="success-message" style="text-align: center; font-weight: 600; margin-top: 16px;">+€${payout - bet}</div>`;
+            } else if (payout < bet) {
+                message = `You lost €${bet - payout}.`;
+                document.getElementById('winLossMessage').innerHTML = `<div class="error-message" style="text-align: center; font-weight: 600; margin-top: 16px;">-€${bet - payout}</div>`;
+            } else {
+                message = `Push - Your bet returned.`;
+                document.getElementById('winLossMessage').innerHTML = `<div style="text-align: center; color: var(--color-text-light); font-weight: 600; margin-top: 16px;">€0</div>`;
+            }
+
+            document.getElementById('resultMessage').textContent = message;
+            resultDiv.classList.remove('hidden');
+
+            // Add to history
+            simState.hands.push({ banker: bankerScore, player: playerScore, result });
+            if (simState.hands.length > 20) simState.hands.shift();
+            updateHistoryTable();
+        }
+
+        function runSimulation() {
+            const numDecks = parseInt(document.getElementById('numDecks').value) || 6;
+            const handsCount = parseInt(document.getElementById('handsToSim').value) || 100;
+            const baseBet = parseInt(document.getElementById('baseBetSim').value) || 10;
+            const system = document.getElementById('systemSim').value;
+            const commission = parseInt(document.getElementById('commission').value) || 5;
+
+            let deck = [];
+            for (let i = 0; i < numDecks; i++) {
+                deck = deck.concat(createDeck());
+            }
+            deck = shuffleDeck(deck);
+
+            let bankroll = 0;
+            let totalWagered = 0;
+            let bankerWins = 0, playerWins = 0, ties = 0;
+            let currentBet = baseBet;
+            let winStreak = 0;
+
+            simState.hands = [];
+
+            for (let i = 0; i < handsCount; i++) {
+                if (deck.length < 20) {
+                    deck = [];
+                    for (let j = 0; j < numDecks; j++) {
+                        deck = deck.concat(createDeck());
+                    }
+                    deck = shuffleDeck(deck);
+                }
+
+                const hand = dealHand(deck);
+                const { playerScore, bankerScore } = hand;
+
+                let betWon = false;
+                let payout = 0;
+
+                if (bankerScore > playerScore) {
+                    bankerWins++;
+                    if (system === 'banker' || system === 'fixed' || system === 'paroli') {
+                        betWon = true;
+                        payout = currentBet * (1 - commission / 100);
+                    }
+                } else if (playerScore > bankerScore) {
+                    playerWins++;
+                    if (system === 'player' || system === 'fixed' || system === 'paroli') {
+                        betWon = true;
+                        payout = currentBet;
+                    }
+                } else {
+                    ties++;
+                }
+
+                totalWagered += currentBet;
+
+                if (betWon) {
+                    bankroll += payout;
+                    winStreak++;
+                } else {
+                    bankroll -= currentBet;
+                    winStreak = 0;
+                }
+
+                // Update bet for systems
+                if (system === 'paroli') {
+                    if (betWon) {
+                        if (winStreak >= 3) {
+                            currentBet = baseBet;
+                            winStreak = 0;
+                        } else {
+                            currentBet = baseBet * Math.pow(2, winStreak);
+                        }
+                    } else {
+                        currentBet = baseBet;
+                    }
+                }
+
+                simState.hands.push({ banker: bankerScore, player: playerScore, result: bankerScore > playerScore ? 'Banker' : (playerScore > bankerScore ? 'Player' : 'Tie') });
+            }
+
+            // Update display
+            document.getElementById('simHandsPlayed').textContent = handsCount;
+            document.getElementById('simTotalWagered').textContent = totalWagered;
+            document.getElementById('simFinalBankroll').textContent = bankroll;
+            document.getElementById('simBankerWins').textContent = bankerWins;
+            document.getElementById('simPlayerWins').textContent = playerWins;
+            document.getElementById('simTies').textContent = ties;
+
+            const roi = totalWagered > 0 ? ((bankroll / totalWagered) * 100 - 100).toFixed(2) : 0;
+            document.getElementById('simProfitLoss').textContent = (bankroll >= 0 ? '€' : '-€') + Math.abs(bankroll);
+            document.getElementById('simROI').textContent = roi + '%';
+            document.getElementById('simProfitLoss').style.color = bankroll >= 0 ? '#22b55e' : '#d32f2f';
+
+            simState.hands = simState.hands.slice(-20);
+            updateHistoryTable();
+        }
+
+        function updateHistoryTable() {
+            const tbody = document.getElementById('simHistoryTable');
+            if (simState.hands.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--color-text-light);">No hands yet.</td></tr>';
+                return;
+            }
+            tbody.innerHTML = simState.hands.map((hand, i) => `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td><span class="result-${hand.result.toLowerCase()}">${hand.result}</span></td>
+                    <td>${hand.banker}</td>
+                    <td>${hand.player}</td>
+                    <td></td>
+                </tr>
+            `).join('');
+        }
+
+        function resetSimulation() {
+            simState = { hands: [], currentBankroll: 0, totalWagered: 0 };
+            document.getElementById('singleHandResult').classList.add('hidden');
+            document.getElementById('simHandsPlayed').textContent = '0';
+            document.getElementById('simTotalWagered').textContent = '0';
+            document.getElementById('simFinalBankroll').textContent = '0';
+            document.getElementById('simBankerWins').textContent = '0';
+            document.getElementById('simPlayerWins').textContent = '0';
+            document.getElementById('simTies').textContent = '0';
+            document.getElementById('simProfitLoss').textContent = '€0';
+            document.getElementById('simROI').textContent = '0%';
+            updateHistoryTable();
+        }
+
+        // Initialize
+        updateHistoryTable();
+    </script>
+</body>
+</html>
